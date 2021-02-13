@@ -163,5 +163,11 @@ router.get('/users/:id/avatar', async (req, res) => {
     } catch (e) {
         res.status(404).send()
     }
-})
+});
+
+router.get('/users/free', (req, res) => {
+    User.find({}).then(users => {
+        res.send(users);
+    }).catch(e => res.send({error: e.message}));
+});
 module.exports = router;
